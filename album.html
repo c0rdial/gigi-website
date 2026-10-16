@@ -4,81 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MySpace - Photo Gallery Viewer</title>
-    <!-- Links directly to your working blog stylesheet for perfect structural sizing -->
-    <link rel="stylesheet" href="blog.css?v=1">
-    
     <!-- Swiper.js Retro Cross-Fade Slider Engine Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css" integrity="sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51" crossorigin="anonymous" />
-    <link rel="stylesheet" href="theme.css?v=4">
+    <link rel="stylesheet" href="style.css">
     
-    <style>
-        /* Orange panel styles matching the exact dimensions from your main entry box */
-        .gallery-container-box {
-            background-color: #ffcc99; /* Light pale orange fill */
-            border: 1px solid #ff9966; /* Saturated orange accent border line */
-            padding: 12px;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        /* Grid columns default to min-width:auto, which lets Swiper widen the column endlessly */
-        .blog-main-content {
-            min-width: 0;
-        }
-
-        /* The Custom Frame housing your sliding photo layers */
-        .swiper-viewscreen {
-            width: 100%;
-            height: 400px;
-            background-color: #000000; /* Dark canvas backdrop layer popping your shots out */
-            border: 1px solid #ff9966;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .swiper-slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* Prevents crop distortion on landscape vs portrait layouts */
-        }
-
-        /* Modifying default modern navigation options into sharp retro components */
-        .swiper-button-next, .swiper-button-prev {
-            color: #003399 !important;
-            text-shadow: 1px 1px #ffffff;
-        }
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 20px !important;
-            font-weight: bold;
-        }
-
-        .swiper-pagination-bullet { background: #ffffff !important; opacity: 0.6; }
-        .swiper-pagination-bullet-active { background: #ff9966 !important; opacity: 1; }
-
-        /* Nostalgic back navigation anchor button elements styling */
-        .gallery-back-link {
-            display: inline-block;
-            margin-bottom: 12px;
-            font-size: 11px;
-            font-weight: bold;
-            color: #003399;
-            text-decoration: underline;
-        }
-        
-        .slider-meta-caption {
-            margin-top: 10px;
-            font-size: 11px;
-            color: #555555;
-            text-align: center;
-            font-style: italic;
-        }
-    </style>
 </head>
 <body>
 
