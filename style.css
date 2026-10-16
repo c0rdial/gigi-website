@@ -17,6 +17,12 @@
   box-sizing: border-box;
 }
 
+/* Stops iOS Safari enlarging text when a phone is turned to landscape */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background-color: var(--myspace-light-blue);
   color: #000000;
@@ -24,6 +30,11 @@ body {
   font-size: 12px;
   margin: 0;
   padding: 0;
+  overflow-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
 }
 
 a {
@@ -33,6 +44,12 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--heading-orange);
+  outline-offset: 2px;
 }
 
 .master-container {
@@ -52,8 +69,10 @@ a:hover {
   background-color: var(--myspace-blue);
   color: #ffffff;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 6px 10px;
   padding: 5px 10px;
 }
 
@@ -91,11 +110,12 @@ a:hover {
 
 .navbar ul {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   list-style: none;
   margin: 0;
-  padding: 0;
-  gap: 15px;
+  padding: 0 8px;
+  gap: 4px 15px;
 }
 
 .navbar a {
@@ -173,10 +193,16 @@ a:hover {
 }
 
 .profile-pic {
+  flex: 0 1 170px;
+  height: auto;
   max-width: 170px;
+  min-width: 0;
 }
 
+/* Text takes the space left by the photo; the photo only shrinks once the text would drop under 80px */
 .profile-info-text {
+  flex: 1 1 0;
+  min-width: 80px;
   text-align: left;
 }
 
@@ -304,7 +330,7 @@ a:hover {
 
 .friend-pic-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 15px;
   margin-top: 15px;
 }
@@ -315,7 +341,7 @@ a:hover {
 }
 
 .friend-pic-container img {
-  height: 90px;
+  aspect-ratio: 1;
   object-fit: cover;
   width: 90px;
 }
@@ -323,6 +349,7 @@ a:hover {
 .friend-pic-container figcaption {
   font-size: 11px;
   margin-bottom: 5px;
+  overflow-wrap: anywhere;
 }
 
 .focus-highlight {
@@ -672,21 +699,15 @@ a:hover {
 }
 
 .friend-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 8px;
   padding: 0 10px;
 }
 
-.friend-list-container::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 .friend-cell {
-  width: 25%;
-  float: left;
   text-align: center;
   margin-bottom: 20px;
-  padding: 0 4px;
 }
 
 .friend-cell h4 {
@@ -701,8 +722,9 @@ a:hover {
 
 .friend-photo-link {
   display: block;
-  width: 100px;
-  height: 100px;
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1;
   margin: 0 auto 6px auto;
   overflow: hidden;
 }
@@ -763,7 +785,7 @@ a:hover {
 
 .album-card-body img {
   width: 150px;
-  height: 115px;
+  aspect-ratio: 150 / 115;
   object-fit: cover;
   margin-bottom: 5px;
 }
@@ -785,7 +807,8 @@ a:hover {
 
 .swiper-viewscreen {
   width: 100%;
-  height: 400px;
+  /* Keeps the whole slider on screen when a phone is held sideways */
+  height: min(400px, 70vh);
   background-color: #000000;
   border: 1px solid var(--myspace-deep-orange);
   position: relative;
@@ -830,4 +853,144 @@ a:hover {
   color: #555555;
   text-align: center;
   font-style: italic;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+/* Tablets and phones held sideways: same two-column look as desktop, with a narrower sidebar */
+@media (max-width: 950px) {
+  .master-container {
+    margin: 10px auto;
+    width: calc(100% - 30px);
+  }
+
+  .page-content-container,
+  .spacehey-blog-grid {
+    grid-template-columns: minmax(220px, 30%) minmax(0, 1fr);
+  }
+}
+
+/* Phones held upright: one column */
+@media (max-width: 600px) {
+  .master-container {
+    margin: 8px auto;
+    padding: 8px;
+    width: calc(100% - 16px);
+  }
+
+  .page-content-container,
+  .spacehey-blog-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* Header: home and help links on the first row, search on its own row */
+  .search-bar form {
+    flex-wrap: wrap;
+    order: 3;
+    width: 100%;
+  }
+
+  .search-bar label:has(input[type="text"]) {
+    flex: 1 1 140px;
+  }
+
+  /* 16px stops iOS zooming the page when the field is tapped */
+  .search-bar input[type="text"] {
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .navbar a {
+    display: inline-block;
+    padding: 3px 0;
+  }
+
+  .friend-pic-container {
+    gap: 12px 8px;
+  }
+
+  /* Names that wrap to two lines push the photo down; this keeps each row of photos level */
+  .friend-pic-container figure {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .friend-pic-container figcaption {
+    flex-grow: 1;
+  }
+
+  /* Blog, gallery and album sidebar becomes a small profile strip */
+  .sidebar-profile {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .blog-profile-pic {
+    max-width: 72px;
+  }
+
+  /* Entry pages: author box becomes a compact byline so the post starts near the top */
+  .author-details-box {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+  }
+
+  .author-pic {
+    grid-row: span 3;
+    margin: 0;
+  }
+
+  .published-date,
+  .entry-meta-item {
+    margin: 0 0 4px 0;
+  }
+
+  .sidebar-nav-actions {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .main-post-box .entry-title {
+    font-size: 20px;
+  }
+
+  .commenter-avatar {
+    width: 64px;
+    height: 64px;
+  }
+
+  .comment-text-body {
+    margin-bottom: 12px;
+  }
+
+  /* Top 8 music: two bigger tiles per row so the art and links are easy to tap */
+  .friend-list-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 12px;
+  }
+
+  .friend-photo-link {
+    max-width: 140px;
+  }
+
+  .album-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+  }
+
+  .gallery-container-box {
+    padding: 8px;
+  }
+
+  .footer {
+    margin-top: 24px;
+  }
 }
