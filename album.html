@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="blog.css?v=1">
     
     <!-- Swiper.js Retro Cross-Fade Slider Engine Stylesheets -->
-    <link rel="stylesheet" href="https://jsdelivr.net" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css" integrity="sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51" crossorigin="anonymous" />
     <link rel="stylesheet" href="theme.css?v=4">
     
     <style>
@@ -19,6 +19,11 @@
             padding: 12px;
             box-sizing: border-box;
             width: 100%;
+        }
+
+        /* Grid columns default to min-width:auto, which lets Swiper widen the column endlessly */
+        .blog-main-content {
+            min-width: 0;
         }
 
         /* The Custom Frame housing your sliding photo layers */
@@ -182,7 +187,7 @@
 </div> <!-- Closed the master-container class properly -->
 
 <!-- Swiper JS Script Library Engine Engine -->
-<script src="https://jsdelivr.net"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js" integrity="sha384-2UI1PfnXFjVMQ7/ZDEF70CR943oH3v6uZrFQGGqJYlvhh4g6z6uVktxYbOlAczav" crossorigin="anonymous"></script>
 
 <script>
     // 1. MASTER PHOTOS DATA INVENTORY FILE LISTING
@@ -191,17 +196,17 @@
         summer: {
             title: "Summer Solstice Shoot (2026)",
             images: [
-                "https://picsum.photos",
-                "https://picsum.photos",
-                "https://picsum.photos"
+                "https://picsum.photos/seed/summer1/900/600",
+                "https://picsum.photos/seed/summer2/600/900",
+                "https://picsum.photos/seed/summer3/900/600"
             ]
         },
         neon: {
             title: "After Hours v1 Shoot",
             images: [
-                "https://picsum.photos",
-                "https://picsum.photos",
-                "https://picsum.photos"
+                "https://picsum.photos/seed/neon1/900/600",
+                "https://picsum.photos/seed/neon2/600/900",
+                "https://picsum.photos/seed/neon3/900/600"
             ]
         }
     };
