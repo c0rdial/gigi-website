@@ -1,0 +1,145 @@
+@import url("https://cdn.cursors-4u.net/cursors/animated/dancing-banana-angel-af1277bf-40.css");
+
+/* --- GLOBAL IMAGE RESET --- */
+/* Completely forces borderless styles on all image types, links, and layout figures across all templates */
+img, 
+a img, 
+figure img, 
+.profile-pic, 
+.blog-profile-pic, 
+.commenter-avatar,
+.commenter-pic,
+.comment-box img {
+    border: 0 !important;
+    border-style: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    background-color: #e5edf5; 
+    background-image: none;
+    background-repeat: repeat;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+/* 1. Global adjustment tailored for ALL mobile viewports */
+@media only screen and (max-device-width: 950px) {
+    body {
+        background-attachment: scroll; /* Prevents mobile fixed wallpaper cutout crashes */
+    }
+}
+
+/* 2. Responsive gap alignment tailored for narrower layout viewports */
+@media only screen and (max-width: 950px) {
+    body {
+        padding: 0; /* Clear padding off the body stops the solid blue edge stripes */
+    }
+    
+    .master-container {
+        margin: 10px auto !important; 
+        width: calc(100% - 30px) !important; /* Leaves a clean, perfect 15px wallpaper gap on mobile landscape sides */
+        max-width: 950px;
+    }
+}
+
+/* --- UNIFIED ORANGE PROFILE SECTIONS --- */
+/* Groups all profile section box headers together to share the exact same soft orange color fill */
+.comment-wall .main-section-header,
+.blurbs .main-section-header,
+.friends .main-section-header {
+    background-color: #ffcc99 !important; 
+    border: none;
+    margin-bottom: 0px;
+}
+
+/* Groups all section title texts together to share the exact same vibrant orange font color */
+.comment-wall .main-section-h2,
+.blurbs .main-section-h2,
+.friends .main-section-h2 {
+    color: #ff6600 !important; 
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+    padding: 6px 10px;
+}
+
+#comment-counter {
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+/* --- TABLE LAYER FOR COMMENTS GRIDS --- */
+.comment-wall table {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: transparent;
+}
+
+/* Row Border Styles: Solid white separators */
+.comment-wall tr {
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Left Column User Cells */
+.comment-wall th[scope="row"] {
+    background-color: #ff9933; 
+    padding: 12px 10px;
+    text-align: center;
+    vertical-align: top;
+    width: 25%;
+    border-right: 2px solid #ffffff; 
+}
+
+.comment-wall th[scope="row"] figure {
+    margin: 0;
+    padding: 0;
+}
+
+.comment-wall th[scope="row"] figcaption {
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.comment-wall th[scope="row"] figcaption a {
+    color: #003399; 
+}
+
+/* Profile Image Settings (Borderless, Natural aspect scaling) */
+.comment-wall th[scope="row"] img {
+    width: 100%;          
+    max-width: 80px;      
+    height: auto;         
+    object-fit: contain;  
+    display: block;
+    margin: 0 auto;
+}
+
+/* Right Column Message Cells */
+.comment-wall td {
+    background-color: #ffcc99; 
+    padding: 12px 15px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.comment-wall td h3 {
+    margin: 0 0 6px 0;
+    font-size: 12px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.comment-wall td p {
+    margin: 0;
+    line-height: 1.4;
+    color: #000000;
+}
+
+#add-comment {
+    margin-top: 10px;
+    text-align: left;
+}

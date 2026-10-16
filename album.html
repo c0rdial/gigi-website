@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySpace - Photo Gallery Viewer</title>
+    <!-- Links directly to your working blog stylesheet for perfect structural sizing -->
+    <link rel="stylesheet" href="blog.css?v=1">
+    
+    <!-- Swiper.js Retro Cross-Fade Slider Engine Stylesheets -->
+    <link rel="stylesheet" href="https://jsdelivr.net" />
+    <link rel="stylesheet" href="theme.css?v=4">
+    
+    <style>
+        /* Orange panel styles matching the exact dimensions from your main entry box */
+        .gallery-container-box {
+            background-color: #ffcc99; /* Light pale orange fill */
+            border: 1px solid #ff9966; /* Saturated orange accent border line */
+            padding: 12px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* The Custom Frame housing your sliding photo layers */
+        .swiper-viewscreen {
+            width: 100%;
+            height: 400px;
+            background-color: #000000; /* Dark canvas backdrop layer popping your shots out */
+            border: 1px solid #ff9966;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Prevents crop distortion on landscape vs portrait layouts */
+        }
+
+        /* Modifying default modern navigation options into sharp retro components */
+        .swiper-button-next, .swiper-button-prev {
+            color: #003399 !important;
+            text-shadow: 1px 1px #ffffff;
+        }
+        .swiper-button-next:after, .swiper-button-prev:after {
+            font-size: 20px !important;
+            font-weight: bold;
+        }
+
+        .swiper-pagination-bullet { background: #ffffff !important; opacity: 0.6; }
+        .swiper-pagination-bullet-active { background: #ff9966 !important; opacity: 1; }
+
+        /* Nostalgic back navigation anchor button elements styling */
+        .gallery-back-link {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #003399;
+            text-decoration: underline;
+        }
+        
+        .slider-meta-caption {
+            margin-top: 10px;
+            font-size: 11px;
+            color: #555555;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<div class="master-container">
+  
+  <!-- Main Header (Matches Profile & Gallery Index Exactly) -->
+  <header class="main-header">
+    <nav class="search-bar">
+      <ul class="topnav home">
+        <li><a href="index.html">MySpace.com</a></li>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+      <form onsubmit="return false;">
+        <label>Inside The Box
+          <input type="radio" name="search-type" value="inside" checked="checked"/>
+        </label>
+        <label>Outside The Box
+          <input type="radio" name="search-type" value="outside"/>
+        </label>
+        <label>
+          <input type="text" name="search"/>
+        </label>
+        <input class="submit-btn" type="submit" name="submit-button" value="Search"/>
+      </form>
+      <ul class="topnav signup">
+        <li><a href="#">Help</a></li>
+        <li><a href="#">SignUp</a></li>
+      </ul>
+    </nav>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Browse</a></li>
+        <li><a href="#">Invite</a></li>
+        <li><a href="#">Mail</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Groups</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Videos</a></li>
+        <li><a href="#">Music</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Layout -->
+  <div class="page-content-container">
+    
+    <!-- Left Sidebar: Profile Summary (Inherits exact stylesheet layout widths) -->
+    <aside class="blog-sidebar">
+      <div class="sidebar-box">
+        <h2>Your Username</h2>
+        <div class="sidebar-profile">
+          <img class="blog-profile-pic" src="images/profile.jpg" alt="Profile Picture"/>
+          <p class="profile-meta">Age: 19<br>Location: Earth</p>
+        </div>
+        <p class="blog-url"><b>Blog URL:</b><br><span class="url-text">https://neocities.org</span></p>
+      </div>
+    </aside>
+    <!-- Main Section: Dynamic Album Slideshow Viewscreen -->
+    <main class="blog-main-content">
+      <a href="gallery.html" class="gallery-back-link">&lt;&lt; Return to Photo Albums</a>
+      <h2 class="main-section-title" id="album-title-field">Loading Album...</h2>
+      
+      <!-- Pale Orange Theme Data Frame Container Box -->
+      <div class="gallery-container-box">
+        
+        <!-- The Swiper Slider Markup structure -->
+        <div class="swiper swiper-viewscreen">
+          <div class="swiper-wrapper" id="slideshow-wrapper">
+             <!-- JavaScript handles image item injections right here -->
+          </div>
+          <!-- Retro Arrow Controls -->
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <!-- Pagination Dots Indicators -->
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="slider-meta-caption">★ Tip: Click the side arrows or use your keyboard arrow keys to scroll gallery entries ★</div>
+
+      </div>
+    </main>
+
+  </div> <!-- Closed the page-content-container class properly -->
+
+  <!-- Footer (Matches Profile Page & Blog Layout Exactly) -->
+  <footer class="footer">
+    <nav>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Safety Tips</a></li>
+        <li><a href="#">Contact Myspace</a></li>
+        <li><a href="#">Report Inappropriate Content</a></li>
+        <li><a href="#">Promote!</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li id="last"><a href="#">MySpace International</a></li>
+      </ul>
+    </nav>
+    <small>&copy;2003-2006 MySpace.com. All Rights Reserved.</small>
+  </footer>
+
+</div> <!-- Closed the master-container class properly -->
+
+<!-- Swiper JS Script Library Engine Engine -->
+<script src="https://jsdelivr.net"></script>
+
+<script>
+    // 1. MASTER PHOTOS DATA INVENTORY FILE LISTING
+    // Simply organize your uploaded image paths and custom album titles inside this dictionary block!
+    const photoDataArchive = {
+        summer: {
+            title: "Summer Solstice Shoot (2026)",
+            images: [
+                "https://picsum.photos",
+                "https://picsum.photos",
+                "https://picsum.photos"
+            ]
+        },
+        neon: {
+            title: "After Hours v1 Shoot",
+            images: [
+                "https://picsum.photos",
+                "https://picsum.photos",
+                "https://picsum.photos"
+            ]
+        }
+    };
+
+    // 2. READ QUERY PARAMETER STRINGS (?shoot=xxxxx)
+    const urlAddressParams = new URLSearchParams(window.location.search);
+    const activeShootID = urlAddressParams.get('shoot') || 'summer'; // fallbacks gracefully back to summer data pack if blank
+
+    // 3. TARGET DATA PACK EXTRACTION
+    const targetAlbum = photoDataArchive[activeShootID];
+    
+    if (targetAlbum) {
+        // Updates text titles safely to sync match selections
+        document.getElementById('album-title-field').innerText = targetAlbum.title;
+        
+        // Appends the loop slides setup block into screen views
+        const slideWrapperElement = document.getElementById('slideshow-wrapper');
+        targetAlbum.images.forEach(imgURL => {
+            slideWrapperElement.innerHTML += `
+                <div class="swiper-slide">
+                    <img src="${imgURL}" alt="Gallery Production Image Capture Entry" />
+                </div>`;
+        });
+    } else {
+        document.getElementById('album-title-field').innerText = "Album Not Found Entry";
+    }
+
+    // 4. FIRE UP SLIDER DEVICE ENGINE CONFIGURATIONS
+    const gallerySwiperEngine = new Swiper('.swiper', {
+        loop: true,
+        effect: 'fade', // Smooth vintage crossfade animation look
+        fadeEffect: { crossFade: true },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+        keyboard: { enabled: true } // Lets users flick using keyboard inputs natively
+    });
+</script>
+
+</body>
+</html>
