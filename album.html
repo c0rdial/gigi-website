@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySpace - Photo Gallery Viewer</title>
+    <title>Gigi's Photo Album</title>
     <!-- Swiper.js Retro Cross-Fade Slider Engine Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.css" integrity="sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
@@ -59,10 +59,10 @@
     <!-- Left Sidebar: Profile Summary (Inherits exact stylesheet layout widths) -->
     <aside class="blog-sidebar">
       <div class="sidebar-box">
-        <h2>Your Username</h2>
+        <h2>Gigi</h2>
         <div class="sidebar-profile">
           <img class="blog-profile-pic" src="images/profile.jpg" alt="Profile Picture"/>
-          <p class="profile-meta">Age: 19<br>Location: Earth</p>
+          <p class="profile-meta">Age: 29<br>Location: Thailand</p>
         </div>
         <p class="blog-url"><b>Blog URL:</b><br><span class="url-text">https://neocities.org</span></p>
       </div>
@@ -167,6 +167,7 @@
     const gallerySwiperEngine = new Swiper('.swiper', {
         loop: true,
         effect: 'fade', // Smooth vintage crossfade animation look
+        speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300,
         fadeEffect: { crossFade: true },
         pagination: { el: '.swiper-pagination', clickable: true },
         navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
