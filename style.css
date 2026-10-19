@@ -11,6 +11,76 @@
   --myspace-deep-orange: #ff9966;
   --heading-orange: #ff6600;
   --title-orange: #cc6600;
+
+  /* Roles: each part of the page reads one of these, so a theme only has to redefine this list */
+  --page-bg: var(--myspace-light-blue);
+  --panel-tint: var(--myspace-light-blue);
+  --surface: #ffffff;
+  --text: #000000;
+  --muted: #666666;
+  --muted-strong: #555555;
+  --rule: #cccccc;
+  --link: var(--myspace-dark-blue);
+  --nav-bg: var(--myspace-dark-blue);
+  --bar-text: #ffffff;
+  --alert: #cc0000;
+  --comment-cell: #ff9933;
+  --top8-border: #EDAF87;
+  --top8-bg: #ffe5cb;
+  --top8-title: #fd6500;
+  --top8-title-bg: #ffcb98;
+  --top8-date: red;
+  --top8-link: #0056AB;
+}
+
+/* --- THEMES (picked in the header by theme.js; Classic is the :root values above) --- */
+html[data-theme="midnight"] {
+  color-scheme: dark;
+  --myspace-blue: #2f4f86;
+  --myspace-orange: #4a3220;
+  --myspace-light-orange: #2c2118;
+  --myspace-deep-orange: #8a5320;
+  --heading-orange: #ffa04d;
+  --title-orange: #ffb86b;
+  --page-bg: #101a33;
+  --panel-tint: #22305a;
+  --surface: #18213d;
+  --text: #e8ecf5;
+  --muted: #a3abc2;
+  --muted-strong: #b8c0d6;
+  --rule: #3a4670;
+  --link: #9cc3ff;
+  --nav-bg: #0a1430;
+  --alert: #ff7a7a;
+  --comment-cell: #6b3f17;
+  --top8-border: #7a5230;
+  --top8-bg: #2c2118;
+  --top8-title: #ffa04d;
+  --top8-title-bg: #4a3220;
+  --top8-date: #ff8a8a;
+  --top8-link: #9cc3ff;
+}
+
+html[data-theme="bubblegum"] {
+  --myspace-blue: #d63d8a;
+  --myspace-orange: #e6ccff;
+  --myspace-light-orange: #f4e8ff;
+  --myspace-deep-orange: #c299ff;
+  --heading-orange: #7a1fc9;
+  --title-orange: #a0307a;
+  --page-bg: #ffe3f1;
+  --panel-tint: #ffe3f1;
+  --rule: #f3b6d3;
+  --link: #a8005a;
+  --nav-bg: #99004f;
+  --alert: #e6007a;
+  --comment-cell: #d9b3ff;
+  --top8-border: #d6a8f0;
+  --top8-bg: #f7ecff;
+  --top8-title: #7a1fc9;
+  --top8-title-bg: #e6ccff;
+  --top8-date: #e6007a;
+  --top8-link: #a8005a;
 }
 
 * {
@@ -24,8 +94,8 @@ html {
 }
 
 body {
-  background-color: var(--myspace-light-blue);
-  color: #000000;
+  background-color: var(--page-bg);
+  color: var(--text);
   font-family: Verdana, Geneva, sans-serif;
   font-size: 12px;
   margin: 0;
@@ -38,7 +108,7 @@ img {
 }
 
 a {
-  color: var(--myspace-dark-blue);
+  color: var(--link);
   text-decoration: none;
 }
 
@@ -53,7 +123,7 @@ input:focus-visible {
 }
 
 .master-container {
-  background-color: #ffffff;
+  background-color: var(--surface);
   margin: 0 auto;
   max-width: 950px;
   padding: 10px;
@@ -67,7 +137,7 @@ input:focus-visible {
 
 .search-bar {
   background-color: var(--myspace-blue);
-  color: #ffffff;
+  color: var(--bar-text);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -100,11 +170,19 @@ input:focus-visible {
 }
 
 .topnav a {
-  color: #ffffff;
+  color: var(--bar-text);
+}
+
+.theme-picker {
+  color: var(--bar-text);
+}
+
+.theme-picker select {
+  font-size: 11px;
 }
 
 .navbar {
-  background-color: var(--myspace-dark-blue);
+  background-color: var(--nav-bg);
   padding: 5px 0;
 }
 
@@ -119,7 +197,7 @@ input:focus-visible {
 }
 
 .navbar a {
-  color: #ffffff;
+  color: var(--bar-text);
   font-weight: bold;
 }
 
@@ -143,7 +221,7 @@ input:focus-visible {
 
 /* --- FOOTER --- */
 .footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid var(--rule);
   margin-top: 40px;
   padding: 20px 0;
   text-align: center;
@@ -159,7 +237,7 @@ input:focus-visible {
 }
 
 .footer li {
-  border-right: 1px solid #000;
+  border-right: 1px solid var(--text);
   padding: 0 8px;
 }
 
@@ -168,7 +246,7 @@ input:focus-visible {
 }
 
 .footer small {
-  color: #666666;
+  color: var(--muted);
   display: block;
   font-size: 11px;
 }
@@ -231,7 +309,7 @@ input:focus-visible {
 
 .sidebar-table-h2 {
   background-color: var(--myspace-blue);
-  color: #ffffff;
+  color: var(--bar-text);
   font-size: 14px;
   margin: 0;
   padding: 5px;
@@ -239,9 +317,9 @@ input:focus-visible {
 }
 
 .sidebar-table-header {
-  background-color: var(--myspace-light-blue);
+  background-color: var(--panel-tint);
   border: 1px solid var(--myspace-blue);
-  color: var(--myspace-dark-blue);
+  color: var(--link);
   padding: 5px;
   text-align: left;
   vertical-align: top;
@@ -261,7 +339,7 @@ input:focus-visible {
 
 .contact-box h2 {
   background-color: var(--myspace-blue);
-  color: #ffffff;
+  color: var(--bar-text);
   font-size: 14px;
   margin: 0;
   padding: 5px;
@@ -353,7 +431,7 @@ input:focus-visible {
 }
 
 .focus-highlight {
-  color: #cc0000;
+  color: var(--alert);
   font-weight: bold;
 }
 
@@ -370,16 +448,16 @@ input:focus-visible {
 }
 
 .comment-wall tr {
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 2px solid var(--surface);
 }
 
 .comment-wall th[scope="row"] {
-  background-color: #ff9933;
+  background-color: var(--comment-cell);
   padding: 12px 10px;
   text-align: center;
   vertical-align: top;
   width: 25%;
-  border-right: 2px solid #ffffff;
+  border-right: 2px solid var(--surface);
 }
 
 .comment-wall th[scope="row"] figure {
@@ -434,7 +512,7 @@ input:focus-visible {
 
 .sidebar-box h2 {
   background-color: var(--myspace-blue);
-  color: #ffffff;
+  color: var(--bar-text);
   font-size: 14px;
   margin: 0;
   padding: 5px;
@@ -469,7 +547,7 @@ input:focus-visible {
 
 .url-text {
   word-break: break-all;
-  color: #666;
+  color: var(--muted);
 }
 
 .main-section-title {
@@ -484,18 +562,18 @@ input:focus-visible {
 .blog-entry {
   border: 2px solid var(--myspace-blue);
   margin-bottom: 25px;
-  background-color: #ffffff;
+  background-color: var(--surface);
 }
 
 .entry-header {
-  background-color: var(--myspace-light-blue);
+  background-color: var(--panel-tint);
   border-bottom: 1px solid var(--myspace-blue);
   padding: 8px 10px;
 }
 
 .entry-meta {
   font-size: 11px;
-  color: #666;
+  color: var(--muted);
   margin-bottom: 3px;
 }
 
@@ -507,7 +585,7 @@ input:focus-visible {
 .entry-category {
   font-size: 11px;
   font-weight: bold;
-  color: var(--myspace-dark-blue);
+  color: var(--link);
 }
 
 .entry-body {
@@ -521,7 +599,7 @@ input:focus-visible {
 .author-details-box {
   border: 2px solid var(--myspace-blue);
   padding: 12px;
-  background-color: #ffffff;
+  background-color: var(--surface);
 }
 
 .author-pic {
@@ -543,7 +621,7 @@ input:focus-visible {
 .published-date {
   margin: 0 0 12px 0;
   font-size: 11px;
-  color: #555;
+  color: var(--muted-strong);
 }
 
 .entry-meta-item {
@@ -556,7 +634,7 @@ input:focus-visible {
   flex-direction: column;
   gap: 6px;
   margin-top: 15px;
-  border-top: 1px dashed #ccc;
+  border-top: 1px dashed var(--rule);
   padding-top: 12px;
   font-size: 12px;
 }
@@ -581,7 +659,7 @@ input:focus-visible {
 .kudos-headline {
   font-size: 13px;
   margin: 0 0 8px 0;
-  color: #cc0000;
+  color: var(--alert);
   font-weight: bold;
 }
 
@@ -671,14 +749,14 @@ input:focus-visible {
 /* --- Top 8 music grids (top8music.html) --- */
 .friend-category-wrapper {
   width: 100%;
-  border: 1px solid #EDAF87;
+  border: 1px solid var(--top8-border);
   margin: 15px 0 30px 0;
-  background-color: #ffe5cb;
+  background-color: var(--top8-bg);
 }
 
 .friend-grid-title {
-  color: #fd6500;
-  background-color: #ffcb98;
+  color: var(--top8-title);
+  background-color: var(--top8-title-bg);
   font-size: 0.95rem;
   padding: 8px;
   margin: 0;
@@ -695,7 +773,7 @@ input:focus-visible {
 
 .friend-count {
   font-weight: 400;
-  color: red;
+  color: var(--top8-date);
 }
 
 .friend-list-container {
@@ -716,7 +794,7 @@ input:focus-visible {
 }
 
 .friend-cell h4 a {
-  color: #0056AB;
+  color: var(--top8-link);
   font-weight: bold;
 }
 
@@ -764,7 +842,7 @@ input:focus-visible {
 
 .album-card-header {
   background-color: var(--myspace-deep-orange);
-  color: #000000;
+  color: var(--text);
   font-weight: bold;
   font-size: 11px;
   padding: 6px 8px;
@@ -828,7 +906,7 @@ input:focus-visible {
 }
 
 .swiper-button-next, .swiper-button-prev {
-  color: var(--myspace-dark-blue);
+  color: var(--link);
   text-shadow: 1px 1px #ffffff;
 }
 
@@ -850,7 +928,7 @@ input:focus-visible {
 .slider-meta-caption {
   margin-top: 10px;
   font-size: 11px;
-  color: #555555;
+  color: var(--muted-strong);
   text-align: center;
   font-style: italic;
 }
@@ -897,6 +975,10 @@ input:focus-visible {
   }
 
   /* 16px stops iOS zooming the page when the field is tapped */
+  .theme-picker select {
+    font-size: 16px;
+  }
+
   .search-bar input[type="text"] {
     font-size: 16px;
     width: 100%;
