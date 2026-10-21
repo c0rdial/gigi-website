@@ -22,8 +22,13 @@
 
     const select = document.createElement('select');
     for (const [value, label] of Object.entries(THEMES)) select.add(new Option(label, value));
-    select.value = root.dataset.theme || 'classic';
     select.addEventListener('change', () => { apply(select.value); save(select.value); });
+
+    // A page restored by the Back button, or open in another tab, would otherwise keep showing the old theme
+    const sync = () => { apply(load()); select.value = root.dataset.theme || 'classic'; };
+    sync();
+    addEventListener('pageshow', sync);
+    addEventListener('storage', (e) => { if (e.key === STORAGE_KEY) sync(); });
 
     const label = document.createElement('label');
     label.className = 'theme-picker';

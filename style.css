@@ -31,6 +31,7 @@
   --top8-title-bg: #ffcb98;
   --top8-date: red;
   --top8-link: #0056AB;
+  --icon-bg: transparent;
 }
 
 /* --- THEMES (picked in the header by theme.js; Classic is the :root values above) --- */
@@ -39,7 +40,7 @@ html[data-theme="midnight"] {
   --myspace-blue: #2f4f86;
   --myspace-orange: #4a3220;
   --myspace-light-orange: #2c2118;
-  --myspace-deep-orange: #8a5320;
+  --myspace-deep-orange: #5c3715;
   --heading-orange: #ffa04d;
   --title-orange: #ffb86b;
   --page-bg: #101a33;
@@ -59,19 +60,20 @@ html[data-theme="midnight"] {
   --top8-title-bg: #4a3220;
   --top8-date: #ff8a8a;
   --top8-link: #9cc3ff;
+  --icon-bg: #e8ecf5;
 }
 
 html[data-theme="bubblegum"] {
-  --myspace-blue: #d63d8a;
+  --myspace-blue: #c2307a;
   --myspace-orange: #e6ccff;
   --myspace-light-orange: #f4e8ff;
-  --myspace-deep-orange: #c299ff;
+  --myspace-deep-orange: #d6bfff;
   --heading-orange: #7a1fc9;
   --title-orange: #a0307a;
   --page-bg: #ffe3f1;
   --panel-tint: #ffe3f1;
   --rule: #f3b6d3;
-  --link: #a8005a;
+  --link: #8a004a;
   --nav-bg: #99004f;
   --alert: #e6007a;
   --comment-cell: #d9b3ff;
@@ -79,8 +81,8 @@ html[data-theme="bubblegum"] {
   --top8-bg: #f7ecff;
   --top8-title: #7a1fc9;
   --top8-title-bg: #e6ccff;
-  --top8-date: #e6007a;
-  --top8-link: #a8005a;
+  --top8-date: #b8005f;
+  --top8-link: #8a004a;
 }
 
 * {
@@ -117,7 +119,8 @@ a:hover {
 }
 
 a:focus-visible,
-input:focus-visible {
+input:focus-visible,
+select:focus-visible {
   outline: 2px solid var(--heading-orange);
   outline-offset: 2px;
 }
@@ -177,8 +180,10 @@ input:focus-visible {
   color: var(--bar-text);
 }
 
+/* 24px is the WCAG 2.2 minimum target size */
 .theme-picker select {
   font-size: 11px;
+  min-height: 24px;
 }
 
 .navbar {
@@ -353,7 +358,9 @@ input:focus-visible {
   padding: 0;
 }
 
+/* The icons are GIFs with dark text baked in, so dark themes need a light backing to keep them readable */
 .contact-images img {
+  background-color: var(--icon-bg);
   cursor: pointer;
   max-width: 100%;
 }
