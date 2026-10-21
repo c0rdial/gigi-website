@@ -1,0 +1,11 @@
+# The site is served from the repo root, so everything that isn't a page or its images/CSS/JS is kept off the web
+.git
+.gitignore
+.assetsignore
+.wrangler
+.claude
+.DS_Store
+wrangler.jsonc
+README.md
+docs
+*.pdf

@@ -1,0 +1,12 @@
+// Cloudflare deploys this on every push to main (Workers Builds). Plain static files, no build step.
+{
+  "name": "gigi-website",
+  "compatibility_date": "2026-05-03",
+  "assets": {
+    "directory": "."
+  },
+  "routes": [
+    { "pattern": "gigivjuju.com", "custom_domain": true },
+    { "pattern": "www.gigivjuju.com", "custom_domain": true }
+  ]
+}
