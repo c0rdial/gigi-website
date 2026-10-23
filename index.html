@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="theme.js"></script>
 </head>
-<body>
+<body data-page="profile">
 
 
 <!-- Original Code: https://codepen.io/challenges/2020/october/3-->
@@ -57,28 +57,21 @@
     <!-- Profile Sidebar Begins-->
     <aside class="profile-sidebar">
       <header>
-        <h1>Gigi</h1>
+        <h1 data-cms="name"></h1>
       </header>
             <!-- Profile Picture-->
       <div class="profile-picture-container">
         <div class="profile-pic-row">
-          <img class="profile-pic" src="images/profile.jpg" alt="Gigi's picture"/>
+          <img class="profile-pic" data-cms="picture" alt=""/>
           <div class="profile-info-text">
-            <p class="personal-msg"><b>&quot;MySpace - so hot right now&quot;</b></p>
-            <ul class="gender-age">
-        
-              <li>29 years old</li>
-              <li>Agender</li>
-              <li>Hua Hin,</li>
-              <li>THAILAND</li>
-              
-            </ul>
+            <p class="personal-msg"><b data-cms="headline"></b></p>
+            <ul class="gender-age" data-cms="info"></ul>
             <p><img src="images/onlinenow.gif" alt="Online Now!"></p>
           </div>
         </div>
         <ul class="last-login">
           <li>Last Login:</li>
-          <li>29/09/2026</li>
+          <li data-cms="lastLogin"></li>
         </ul>
         <p class="pics-videos">View My: <a href="gallery.html"><b>Pics</b></a> | <a href="#"><b>Videos</b></a></p>
       </div>
@@ -100,37 +93,7 @@
           <caption>
             <h2 class="sidebar-table-h2">Gigi's Interests</h2>
           </caption>
-          <tbody>
-            <tr>
-              <th class="sidebar-table-header" scope="row">General</th>
-              <td class="sidebar-table-data">
-		<p>tbc</p>
-	</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Music</th>
-              <td class="sidebar-table-data">
-		<p><b>Bands</b>: tbc</p>
-		<p><b>Solo Artists</b>: tbc</p>
-		<p><b>Singers</b>: tbc</p>
-		<p><b>Albums</b>: tbc</p>
-		<p><b>Instruments</b>: tbc</p>
-	</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Movies</th>
-              <td class="sidebar-table-data">
-		<p><b>Films</b>: tbc</p>
-		<p><b>Directors</b>: tbc</p>
-	</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Television</th>
-              <td class="sidebar-table-data">
-		<p>tbc</p>
-	</td>
-            </tr>
-          </tbody>
+          <tbody data-cms="interests"></tbody>
         </table>
       </section>
       <!-- Details Section-->
@@ -139,39 +102,7 @@
           <caption>
             <h2 class="sidebar-table-h2">Gigi's Details</h2>
           </caption>
-          <tbody>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Status:</th>
-              <td class="sidebar-table-data">Quantumly Entangled</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Here For:</th>
-              <td class="sidebar-table-data">Tech Oligarch Rebellion</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Hometown:</th>
-              <td class="sidebar-table-data">Melbourne, AU</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Ethnicity:</th>
-              <td class="sidebar-table-data">Variations of White</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Zodiac:</th>
-              <td class="sidebar-table-data">Scorpio</td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Smoke/Drink:
-              </th>
-              <td class="sidebar-table-data">420blazeit
-                
-              </td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">Occupation:</th>
-              <td class="sidebar-table-data">Bitta this, bitta that</td>
-            </tr>
-          </tbody>
+          <tbody data-cms="details"></tbody>
         </table>
       </section>
       <!-- Schools Section-->
@@ -180,29 +111,14 @@
           <caption>
             <h2 class="sidebar-table-h2">Gigi's Schools</h2>
           </caption>
-          <tbody>
-            <tr>
-              <th class="sidebar-table-header" scope="row">
-               <p> School of Hard Knocks</p>
-              </th>
-              <td class="sidebar-table-data">2002 to 2014
-              </td>
-            </tr>
-            <tr>
-              <th class="sidebar-table-header" scope="row">
-                <p>The Mean Streets </p>
-              </th>
-              <td class="sidebar-table-data">2014 to Present
-
-              </td>
-            </tr>
-          </tbody>
+          <tbody data-cms="schools"></tbody>
         </table>
       </section>
     </aside>
     <!-- Profile Side Bar Ends-->
     <!-- Main Section-->
     <main>
+      <p data-cms="status">Loading…</p>
       <section class="user-network">
         <header>
           <h2>Gigi is in your extended network</h2>
@@ -210,8 +126,7 @@
       </section>
       <section class="blog">
         <p><b>Gigi's Latest Blog Entry [<a href="#">Subscribe to this Blog</a>]</b></p>
-        <p>Sharing my Baby with the World (<a href="maplists.html">view more</a>)</p>
-        <p>My Current Musical Top 8's (<a href="top8music.html">view more</a>)</p>
+        <div data-cms="latestPosts"></div>
     
         <p>[<a href="blog.html">View All Blog Entries</a>]</p>
       </section>
@@ -220,52 +135,17 @@
           <h2 class="main-section-h2">Gigi's Blurbs</h2>
         </header>
         <h3>About me:</h3>
-		<p>I'm here to help you with <b>MySpace</b>. Send me a message if you're confused by anything. <span class="info">Before asking me a question, please check the <a href="#">FAQ</a> to see if your question has already been answered.</span></p>
-
-		<p>I may have been on your friend list when you signed up. If you don't want me to be, click "Edit Friends" and remove me!</p>
-
-		<p><strong>Also, feel free to tell me what features you want to see on MySpace and if I think it's cool, we'll do it!</strong></p>
-
-		<p>If you want a tutorial on HTML/designing your page, check this out: <a href="#">Mack</a>!!</p>
-
-		<p>Note: If you try to view my friends list you won't see all 24,000,000 million people. This was bogging down the system, so we made it only show 40 people. So you wont be able to see the friends on my list.</p>
-	
+        <div data-cms="aboutMe"></div>
         <h3>Who I&apos;d like to meet:</h3>
-		<p>I'd like to meet people who educate, inspire or entertain me... I have a few close friends I've known all my life. I'd like to make more. </p>
+        <div data-cms="whoIdLikeToMeet"></div>
 	
       </section>
       <section class="friends">
         <header class="main-section-header">
           <h2 class="main-section-h2">Gigi's Top 8 Friends</h2>
         </header>
-        <p><b>Gigi has <span class="focus-highlight">69420</span> Friends.</b></p>
-        <div class="friend-pic-container">
-          <figure>
-            <figcaption><a href="https://www.instagram.com/olliecsmith/">Ollie Smith</a></figcaption><a href="https://www.instagram.com/olliecsmith/"><img src="images/ocs.jpg" alt="Ollie Smith"/></a>
-          </figure>
-          <figure>
-            <figcaption><a href="https://www.instagram.com/theallyfromcali/">Ally Millman</a></figcaption><a href="https://www.instagram.com/theallyfromcali/"><img src="images/am.jpg" alt="Ally Millman"/></a>
-          </figure>
-          <figure>
-            <figcaption><a href="https://www.instagram.com/noah.gender/">Noah Gender</a></figcaption><a href="https://www.instagram.com/noah.gender/"><img src="images/ng.jpg" alt="Noah Gender"/></a>
-          </figure>
-          <figure>
-            <figcaption><a href="https://www.instagram.com/k.ostantina">Tina Vlahos</a></figcaption><a href="https://www.instagram.com/k.ostantina"><img src="images/tv.jpg" alt="Tina Vlahos"/></a>
-          </figure>
-          <figure>
-            <figcaption><a href="https://www.instagram.com/zohrankmamdani">My Mayor</a></figcaption><a href="https://www.instagram.com/zohrankmamdani"><img src="images/zm.jpg" alt="My Mayor"/></a>
-          </figure>
-          
-          <figure>
-            <figcaption><a href="https://www.instagram.com/anthonybourdain">Anthony Bourdain</a></figcaption><a href="https://www.instagram.com/anthonybourdain"><img src="images/ab.jpg" alt="Anthony Bourdain"/></a>
-          </figure>
-          <figure>
-            <figcaption><a href="https://www.instagram.com/ca7riel/">Ca7riel</a></figcaption><a href="https://www.instagram.com/ca7riel/"><img src="images/c7.jpg" alt="Ca7riel"/></a>
-          </figure>
-          <figure>
-            <figcaption><a href="https://www.instagram.com/pacoamoroso/">Paco Amoroso</a></figcaption><a href="https://www.instagram.com/pacoamoroso/"><img src="images/pa.jpg" alt="Paco Amoroso"/></a>
-          </figure>
-        </div>
+        <p><b>Gigi has <span class="focus-highlight" data-cms="friendCount"></span> Friends.</b></p>
+        <div class="friend-pic-container" data-cms="topFriends"></div>
         <p class="friends-list-link"><a href="images/ww.jpeg">View All of Gigi's Friends</a></p>
       </section>
       <section class="comment-wall">
@@ -359,5 +239,6 @@
   </footer>
 </div>
 
+<script type="module" src="cms.js"></script>
 </body>
 </html>

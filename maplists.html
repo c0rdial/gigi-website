@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="theme.js"></script>
 </head>
-<body>
+<body data-page="entry" data-post="maplists">
 
 <div class="master-container">
   
@@ -56,12 +56,12 @@
     <!-- Sidebar: Author Meta Information Box -->
     <aside class="author-sidebar">
       <div class="author-details-box">
-        <img class="author-pic" src="images/profile.jpg" alt="Gigi's profile picture"/>
+        <img class="author-pic" data-cms="sidebarPicture" alt="Gigi's profile picture"/>
         
         <h4 class="published-by-title">Published by <a href="index.html">Gigi</a></h4>
-        <p class="published-date">published 1 day ago</p>
+        <p class="published-date" data-cms="published"></p>
         
-        <p class="entry-meta-item"><b>Category:</b> Art and Photography</p>
+        <p class="entry-meta-item"><b>Category:</b> <span data-cms="category"></span></p>
         
         <div class="sidebar-nav-actions">
           <a href="blog.html">📁 View Blog</a>
@@ -76,39 +76,9 @@
       
       <!-- The Main Post Block -->
       <article class="main-post-box">
-        <h1 class="entry-title">Sharing my Baby with the World</h1>
+        <h1 class="entry-title" data-cms="title"><span data-cms="status">Loading…</span></h1>
         
-        <div class="entry-content-text">
-         <p>It’s time to announce my baby to the world….</p>
-
-<p>…..the baby that is my Google Maps lists</p>
-
-<p>I’ve been working away at these for years now and I think it’s time you get to use them too. You can open these lists and save them all to your Google Maps account. Then you’ll see a plethora of inspiration for accomodation, dining, shopping, and much more.</p>
-
-<p><b>THERE’S ABSOLUTELY ZERO SPONSORED CONTENT IN HERE!</b></p>
-
-<p>Each list is split up into these categories;</p>
-
-<ul>
-  <li><a href="https://maps.app.goo.gl/qzJsYXYhSxtn91PU9">Cafes, Restaurants, & Bars</a></li>
-  <li><a href="https://maps.app.goo.gl/DZLLzYBUXBU6AASx9">Accomodation</a></li>
-  <li><a href="https://maps.app.goo.gl/Jkh4fyxR9EeL7EG56">Shopping</a></li>
-  <li><a href="https://maps.app.goo.gl/7xnaQuG727kjDnxE7">Groceries & Markets</a></li>
-  <li><a href="https://maps.app.goo.gl/mXwq8D4uf3esZ4LW8">Beauty & Self Care</a></li>
-  <li><a href="https://maps.app.goo.gl/6GWvYLoKyrq4hw5p7">Nature & Cities to Visit</a></li>
-  <li><a href="https://maps.app.goo.gl/oqzacL2jUy8vSByGA">Activities</a></li>
-  <li><a href="https://maps.app.goo.gl/3Fbc3Ag4noyYDthf7">Physical Exercise</a></li>
-  <li><a href="https://maps.app.goo.gl/kthUa1erfHD9how1A">Health & Medical</a></li>
-</ul>
-
-<p>Simply open the link and hit "save"</p>
-
-<p>If you have suggestions of places to add or remove from the lists please send them to me at goodjujutimes@gmail.com or message me on Instagram @goodjujutimes</p>
-
-<p><i>Disclaimer: some of these are cheap and cheerful, others are very high end. I haven’t personally been to all these places. In some cases I’ve only seen them on social media, so please <b>do some research before committing</b> to make sure it’s genuinely good and not a victim of virality and faux hype.</i></p>
-
-<p>Happy exploring!</p>
-        </div>
+        <div class="entry-content-text" data-cms="body"></div>
         
         <div class="kudos-section">
           <p class="kudos-headline">8 Kudos</p>
@@ -185,5 +155,6 @@
 
 </div>
 
+<script type="module" src="cms.js"></script>
 </body>
 </html>

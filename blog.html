@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="theme.js"></script>
 </head>
-<body>
+<body data-page="blog">
 
 <div class="master-container">
   
@@ -59,8 +59,8 @@
       <div class="sidebar-box">
         <h2>Gigi</h2>
         <div class="sidebar-profile">
-          <img class="blog-profile-pic" src="images/profile.jpg" alt="Profile Picture"/>
-          <p class="profile-meta">Age: 29<br>Location: Thailand</p>
+          <img class="blog-profile-pic" data-cms="sidebarPicture" alt="Profile Picture"/>
+          <p class="profile-meta" data-cms="sidebarMeta"></p>
         </div>
         <p class="blog-url"><b>Blog URL:</b><br><span class="url-text">https://neocities.org</span></p>
       </div>
@@ -69,43 +69,8 @@
     <!-- Main Section: Blog Posts -->
     <main class="blog-main-content">
       <h2 class="main-section-title">Gigi's Blog Entries</h2>
-      
-      <!-- Entry 1 -->
-      <article class="blog-entry">
-        <header class="entry-header">
-          <div class="entry-meta">Date: Sept 28, 2026 — 69 Comments</div>
-          <h3 class="entry-title"><a href="maplists.html">Sharing my Baby with the World</a></h3>
-          <div class="entry-category">Category: Travel</div>
-        </header>
-        <div class="entry-body">
-          <p>It’s time to announce my baby to the world….</p>
-
-<p>…..the baby that is my Google Maps lists</p>
-
-<p>I’ve been working away at these for years now and I think it’s time you get to use them too. You can open these lists and save them all to your Google Maps account. Then you’ll see a plethora of inspiration for accomodation, dining, shopping, and much more.</p>
-
-<p><b>THERE’S ABSOLUTELY ZERO SPONSORED CONTENT IN HERE!</b></p>
-<p><a href="maplists.html">continue reading...</a></p>
-        </div>
-      </article>
-
-      <!-- Entry 2 -->
-      <article class="blog-entry">
-        <header class="entry-header">
-          <div class="entry-meta">Date: Sept 29, 2026 — 420 Comments</div>
-          <h3 class="entry-title"><a href="top8music.html">My Current Musical Top 8's</a></h3>
-          <div class="entry-category">Category: Music</div>
-        </header>
-        <div class="entry-body">
-          <p>Feeling musically uninspired? Take a squizz at my;</p>
-          <ul> 
-          <li>Top 8 Heavy Rotation Songs</li>
-          <li>Top 8 Self Made Playlists </li>
-          <li>Top 8 Playlists & Sets by Others</li>
-          </ul>
-          <p><a href="top8music.html">continue reading...</a></p>
-        </div>
-      </article>
+      <p data-cms="status">Loading…</p>
+      <div data-cms="posts"></div>
     </main>
 
   </div>
@@ -131,5 +96,6 @@
 
 </div>
 
+<script type="module" src="cms.js"></script>
 </body>
 </html>

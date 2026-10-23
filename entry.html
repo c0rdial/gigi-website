@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="theme.js"></script>
 </head>
-<body>
+<body data-page="entry">
 
 <div class="master-container">
   
@@ -56,12 +56,12 @@
     <!-- Sidebar: Author Meta Information Box -->
     <aside class="author-sidebar">
       <div class="author-details-box">
-        <img class="author-pic" src="images/profile.jpg" alt="Gigi's profile picture"/>
+        <img class="author-pic" data-cms="sidebarPicture" alt="Gigi's profile picture"/>
         
         <h4 class="published-by-title">Published by <a href="index.html">Gigi</a></h4>
-        <p class="published-date">published 1 day ago</p>
+        <p class="published-date" data-cms="published"></p>
         
-        <p class="entry-meta-item"><b>Category:</b> Art and Photography</p>
+        <p class="entry-meta-item"><b>Category:</b> <span data-cms="category"></span></p>
         
         <div class="sidebar-nav-actions">
           <a href="blog.html">📁 View Blog</a>
@@ -76,12 +76,9 @@
       
       <!-- The Main Post Block -->
       <article class="main-post-box">
-        <h1 class="entry-title">Your Blog Title Goes Here</h1>
+        <h1 class="entry-title" data-cms="title"><span data-cms="status">Loading…</span></h1>
         
-        <div class="entry-content-text">
-          <p>This is where the text of your blog entry goes. It now aligns perfectly with the standard font configurations and sizing rules of the SpaceHey single entry page structure layout.</p>
-          <p>You can add paragraphs, custom texts, or local project descriptions inside this field.</p>
-        </div>
+        <div class="entry-content-text" data-cms="body"></div>
         
         <div class="kudos-section">
           <p class="kudos-headline">8 Kudos</p>
@@ -162,5 +159,6 @@
 
 </div>
 
+<script type="module" src="cms.js"></script>
 </body>
 </html>

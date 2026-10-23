@@ -10,7 +10,7 @@
     <script src="theme.js"></script>
     
 </head>
-<body>
+<body data-page="album">
 
 <div class="master-container">
   
@@ -62,8 +62,8 @@
       <div class="sidebar-box">
         <h2>Gigi</h2>
         <div class="sidebar-profile">
-          <img class="blog-profile-pic" src="images/profile.jpg" alt="Profile Picture"/>
-          <p class="profile-meta">Age: 29<br>Location: Thailand</p>
+          <img class="blog-profile-pic" data-cms="sidebarPicture" alt="Profile Picture"/>
+          <p class="profile-meta" data-cms="sidebarMeta"></p>
         </div>
         <p class="blog-url"><b>Blog URL:</b><br><span class="url-text">https://neocities.org</span></p>
       </div>
@@ -71,16 +71,14 @@
     <!-- Main Section: Dynamic Album Slideshow Viewscreen -->
     <main class="blog-main-content">
       <a href="gallery.html" class="gallery-back-link">&lt;&lt; Return to Photo Albums</a>
-      <h2 class="main-section-title" id="album-title-field">Loading Album...</h2>
+      <h2 class="main-section-title" data-cms="albumTitle"><span data-cms="status">Loading Album...</span></h2>
       
       <!-- Pale Orange Theme Data Frame Container Box -->
       <div class="gallery-container-box">
         
         <!-- The Swiper Slider Markup structure -->
         <div class="swiper swiper-viewscreen">
-          <div class="swiper-wrapper" id="slideshow-wrapper">
-             <!-- JavaScript handles image item injections right here -->
-          </div>
+          <div class="swiper-wrapper" data-cms="slides"></div>
           <!-- Retro Arrow Controls -->
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
@@ -118,63 +116,7 @@
 
 <!-- Swiper JS Script Library Engine Engine -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11.2.10/swiper-bundle.min.js" integrity="sha384-2UI1PfnXFjVMQ7/ZDEF70CR943oH3v6uZrFQGGqJYlvhh4g6z6uVktxYbOlAczav" crossorigin="anonymous"></script>
-
-<script>
-    // 1. MASTER PHOTOS DATA INVENTORY FILE LISTING
-    // Simply organize your uploaded image paths and custom album titles inside this dictionary block!
-    const photoDataArchive = {
-        summer: {
-            title: "Summer Solstice Shoot (2026)",
-            images: [
-                "https://picsum.photos/seed/summer1/900/600",
-                "https://picsum.photos/seed/summer2/600/900",
-                "https://picsum.photos/seed/summer3/900/600"
-            ]
-        },
-        neon: {
-            title: "After Hours v1 Shoot",
-            images: [
-                "https://picsum.photos/seed/neon1/900/600",
-                "https://picsum.photos/seed/neon2/600/900",
-                "https://picsum.photos/seed/neon3/900/600"
-            ]
-        }
-    };
-
-    // 2. READ QUERY PARAMETER STRINGS (?shoot=xxxxx)
-    const urlAddressParams = new URLSearchParams(window.location.search);
-    const activeShootID = urlAddressParams.get('shoot') || 'summer'; // fallbacks gracefully back to summer data pack if blank
-
-    // 3. TARGET DATA PACK EXTRACTION
-    const targetAlbum = photoDataArchive[activeShootID];
-    
-    if (targetAlbum) {
-        // Updates text titles safely to sync match selections
-        document.getElementById('album-title-field').innerText = targetAlbum.title;
-        
-        // Appends the loop slides setup block into screen views
-        const slideWrapperElement = document.getElementById('slideshow-wrapper');
-        targetAlbum.images.forEach(imgURL => {
-            slideWrapperElement.innerHTML += `
-                <div class="swiper-slide">
-                    <img src="${imgURL}" alt="Gallery Production Image Capture Entry" />
-                </div>`;
-        });
-    } else {
-        document.getElementById('album-title-field').innerText = "Album Not Found Entry";
-    }
-
-    // 4. FIRE UP SLIDER DEVICE ENGINE CONFIGURATIONS
-    const gallerySwiperEngine = new Swiper('.swiper', {
-        loop: true,
-        effect: 'fade', // Smooth vintage crossfade animation look
-        speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300,
-        fadeEffect: { crossFade: true },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        keyboard: { enabled: true } // Lets users flick using keyboard inputs natively
-    });
-</script>
+<script type="module" src="cms.js"></script>
 
 </body>
 </html>
