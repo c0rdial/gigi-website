@@ -18,7 +18,6 @@ export const profile = defineType({
       title: 'Profile picture',
       type: 'image',
       group: 'basics',
-      options: {hotspot: true},
       validation: (r) => r.required(),
     }),
     defineField({
@@ -61,7 +60,6 @@ export const profile = defineType({
             defineField({
               name: 'photo',
               type: 'image',
-              options: {hotspot: true},
               validation: (r) => r.required(),
             }),
           ],

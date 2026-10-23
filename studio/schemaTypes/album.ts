@@ -30,7 +30,6 @@ export const album = defineType({
       name: 'cover',
       title: 'Cover picture',
       type: 'image',
-      options: {hotspot: true},
       validation: (r) => r.required(),
     }),
     defineField({
