@@ -1,6 +1,6 @@
 // Fills each page from Sanity (project 6nir8wjj), so Gigi edits content in the Studio and never needs a redeploy.
 // Pages hold empty [data-cms] containers; <body data-page> says which content to fetch.
-import {toHTML} from 'https://cdn.jsdelivr.net/npm/@portabletext/to-html@6.0.0/+esm'
+import {toHTML} from './portabletext-to-html.js'
 
 const PROJECT = '6nir8wjj'
 const DATASET = 'production'
