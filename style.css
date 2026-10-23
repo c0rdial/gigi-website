@@ -166,6 +166,8 @@ select:focus-visible {
 
 .topnav {
   display: flex;
+  /* The theme picker's taller select would otherwise stretch every item and push the links to the top */
+  align-items: center;
   list-style: none;
   margin: 0;
   padding: 0;
