@@ -3,8 +3,8 @@ import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 
-// The site reads the profile by this fixed id, so the Studio must never create a second one.
-const PROFILE_ID = 'profile'
+// The site reads these by fixed id, so the Studio must never create a second one.
+const SINGLETONS = ['profile', 'navigation']
 
 export default defineConfig({
   name: 'default',
@@ -21,8 +21,12 @@ export default defineConfig({
           .items([
             S.listItem()
               .title('Profile')
-              .id(PROFILE_ID)
-              .child(S.document().schemaType('profile').documentId(PROFILE_ID)),
+              .id('profile')
+              .child(S.document().schemaType('profile').documentId('profile')),
+            S.listItem()
+              .title('Header & footer links')
+              .id('navigation')
+              .child(S.document().schemaType('navigation').documentId('navigation')),
             S.divider(),
             S.documentTypeListItem('post').title('Blog entries'),
             S.documentTypeListItem('album').title('Photo albums'),
@@ -33,12 +37,12 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
-    templates: (templates) => templates.filter(({schemaType}) => schemaType !== 'profile'),
+    templates: (templates) => templates.filter(({schemaType}) => !SINGLETONS.includes(schemaType)),
   },
 
   document: {
     actions: (actions, {schemaType}) =>
-      schemaType === 'profile'
+      SINGLETONS.includes(schemaType)
         ? actions.filter(({action}) => action !== 'duplicate' && action !== 'delete')
         : actions,
   },

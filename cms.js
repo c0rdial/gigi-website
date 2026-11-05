@@ -182,6 +182,26 @@ const pages = {
   },
 }
 
+// Runs apart from the page's content: if it fails, the links already in the HTML still work.
+async function renderNavigation() {
+  const nav = await query(`*[_id == "navigation"][0]`)
+  const links = (list) => list.map(({label, url}) => `<li><a href="${esc(url ?? '#')}">${esc(label)}</a></li>`).join('')
+  if (nav?.topLeft) document.querySelector('.topnav.home').innerHTML = links(nav.topLeft)
+  if (nav?.menu) document.querySelector('.navbar ul').innerHTML = links(nav.menu)
+  if (nav?.footer) {
+    document.querySelector('.footer ul').innerHTML = links(nav.footer)
+    // The stylesheet drops the separator after the final footer link by this id
+    document.querySelector('.footer li:last-child')?.setAttribute('id', 'last')
+  }
+  if (nav?.topRight) {
+    // theme.js keeps its picker in this list, so only the links are swapped
+    const list = document.querySelector('.topnav.signup')
+    for (const item of list.querySelectorAll('li:has(> a)')) item.remove()
+    list.insertAdjacentHTML('afterbegin', links(nav.topRight))
+  }
+}
+renderNavigation().catch((error) => console.error('Navigation not loaded from Sanity:', error))
+
 const status = document.querySelector('[data-cms="status"]')
 try {
   await pages[document.body.dataset.page]()
