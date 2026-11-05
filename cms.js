@@ -23,6 +23,15 @@ function imageUrl(image, width) {
 
 const esc = (value = '') => String(value).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
 const text = (blocks) => (blocks ? toHTML(blocks) : '')
+// The Studio validates links too, but the API can be written to directly, so the page refuses script URLs itself.
+function safeUrl(url) {
+  try {
+    return ['http:', 'https:', 'mailto:'].includes(new URL(url, location.href).protocol) ? url : '#'
+  } catch {
+    return '#'
+  }
+}
+const safeHref = (url) => esc(safeUrl(url ?? '#'))
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
 // Sanity dates are plain YYYY-MM-DD; splitting avoids Date's UTC shift.
@@ -78,7 +87,7 @@ const pages = {
     fill('friendCount', esc(profile.friendCount))
     fill('topFriends', (profile.topFriends ?? []).map(({name, url, photo}) => `
       <figure>
-        <figcaption><a href="${esc(url)}">${esc(name)}</a></figcaption><a href="${esc(url)}"><img src="${imageUrl(photo, 300)}" alt="${esc(name)}"/></a>
+        <figcaption><a href="${safeHref(url)}">${esc(name)}</a></figcaption><a href="${safeHref(url)}"><img src="${imageUrl(photo, 300)}" alt="${esc(name)}"/></a>
       </figure>`).join(''))
   },
 
@@ -128,9 +137,9 @@ const pages = {
         <div class="friend-list-container">
           ${(list.items ?? []).map((item) => `
           <div class="friend-cell">
-            <h4><a href="${esc(item.url)}">${esc(item.title)}</a></h4>
-            <a class="friend-photo-link" href="${esc(item.url)}"><img src="${imageUrl(item.image, 300)}" alt="${esc(item.image.alt ?? item.title)}"/></a>
-            ${item.subtitle ? `<p><a href="${esc(item.subtitleUrl ?? item.url)}"><i>${esc(item.subtitle)}</i></a></p>` : ''}
+            <h4><a href="${safeHref(item.url)}">${esc(item.title)}</a></h4>
+            <a class="friend-photo-link" href="${safeHref(item.url)}"><img src="${imageUrl(item.image, 300)}" alt="${esc(item.image.alt ?? item.title)}"/></a>
+            ${item.subtitle ? `<p><a href="${safeHref(item.subtitleUrl ?? item.url)}"><i>${esc(item.subtitle)}</i></a></p>` : ''}
           </div>`).join('')}
         </div>
       </div>`).join(''))
@@ -185,7 +194,7 @@ const pages = {
 // Runs apart from the page's content: if it fails, the links already in the HTML still work.
 async function renderNavigation() {
   const nav = await query(`*[_id == "navigation"][0]`)
-  const links = (list) => list.map(({label, url}) => `<li><a href="${esc(url ?? '#')}">${esc(label)}</a></li>`).join('')
+  const links = (list) => list.map(({label, url}) => `<li><a href="${safeHref(url)}">${esc(label)}</a></li>`).join('')
   if (nav?.topLeft) document.querySelector('.topnav.home').innerHTML = links(nav.topLeft)
   if (nav?.menu) document.querySelector('.navbar ul').innerHTML = links(nav.menu)
   if (nav?.footer) {
