@@ -8,7 +8,7 @@ export const profile = defineType({
   groups: [
     {name: 'basics', title: 'Basics', default: true},
     {name: 'about', title: 'Blurbs'},
-    {name: 'tables', title: 'Interests, details & schools'},
+    {name: 'tables', title: 'Interests & details'},
     {name: 'friends', title: 'Top 8 friends'},
   ],
   fields: [
@@ -113,22 +113,6 @@ export const profile = defineType({
             defineField({name: 'value', type: 'string'}),
           ],
           preview: {select: {title: 'label', subtitle: 'value'}},
-        }),
-      ],
-    }),
-    defineField({
-      name: 'schools',
-      type: 'array',
-      group: 'tables',
-      of: [
-        defineArrayMember({
-          name: 'school',
-          type: 'object',
-          fields: [
-            defineField({name: 'name', type: 'string', validation: (r) => r.required()}),
-            defineField({name: 'years', description: 'For example 2002 to 2014.', type: 'string'}),
-          ],
-          preview: {select: {title: 'name', subtitle: 'years'}},
         }),
       ],
     }),

@@ -71,9 +71,6 @@ const pages = {
     fill('details', (profile.details ?? []).map(({label, value}) => `
       <tr><th class="sidebar-table-header" scope="row">${esc(label)}:</th>
       <td class="sidebar-table-data">${esc(value)}</td></tr>`).join(''))
-    fill('schools', (profile.schools ?? []).map(({name, years}) => `
-      <tr><th class="sidebar-table-header" scope="row"><p>${esc(name)}</p></th>
-      <td class="sidebar-table-data">${esc(years)}</td></tr>`).join(''))
     fill('latestPosts', latest.map(({title, slug}) =>
       `<p>${esc(title)} (<a href="entry.html?post=${encodeURIComponent(slug)}">view more</a>)</p>`).join(''))
     fill('aboutMe', text(profile.aboutMe))

@@ -972,6 +972,31 @@ select:focus-visible {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  /* Profile page: the wrappers step aside so interests and details can sit between top friends and comments */
+  .profile-sidebar,
+  .profile-sidebar + main {
+    display: contents;
+  }
+
+  .profile-sidebar > *,
+  .profile-sidebar + main > * {
+    min-width: 0;
+  }
+
+  /* Sections bring their own margins; the grid's gap was only meant to separate the two wrappers */
+  .page-content-container:has(> .profile-sidebar) {
+    row-gap: 0;
+  }
+
+  .interests,
+  .details {
+    order: 1;
+  }
+
+  .comment-wall {
+    order: 2;
+  }
+
   /* Header: home and help links on the first row, search on its own row */
   .search-bar form {
     flex-wrap: wrap;
