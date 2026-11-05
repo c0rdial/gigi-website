@@ -295,6 +295,10 @@ select:focus-visible {
   margin: 0;
 }
 
+.profile-info-text .last-login {
+  margin-top: 10px;
+}
+
 .personal-msg {
   font-style: italic;
   margin-top: 10px;
