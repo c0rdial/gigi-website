@@ -195,6 +195,7 @@ const pages = {
 async function renderNavigation() {
   const nav = await query(`*[_id == "navigation"][0]`)
   const links = (list) => list.map(({label, url}) => `<li><a href="${safeHref(url)}">${esc(label)}</a></li>`).join('')
+  if (nav?.contactButtons) renderContactButtons(nav.contactButtons)
   if (nav?.topLeft) document.querySelector('.topnav.home').innerHTML = links(nav.topLeft)
   if (nav?.menu) document.querySelector('.navbar ul').innerHTML = links(nav.menu)
   if (nav?.footer) {
@@ -207,6 +208,22 @@ async function renderNavigation() {
     const list = document.querySelector('.topnav.signup')
     for (const item of list.querySelectorAll('li:has(> a)')) item.remove()
     list.insertAdjacentHTML('afterbegin', links(nav.topRight))
+  }
+}
+
+// Separate anchors, not a list: each button keeps its own GIF, so only its destination is editable.
+function renderContactButtons(buttons) {
+  for (const anchor of document.querySelectorAll('[data-contact]')) {
+    const url = buttons[anchor.dataset.contact]
+    if (url && safeUrl(url) !== '#') {
+      anchor.href = url
+      if (url.startsWith('mailto:')) anchor.removeAttribute('target')
+      else anchor.target = '_blank'
+      anchor.rel = 'noopener'
+    } else {
+      anchor.removeAttribute('href')
+      anchor.removeAttribute('target')
+    }
   }
 }
 renderNavigation().catch((error) => console.error('Navigation not loaded from Sanity:', error))

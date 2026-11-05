@@ -368,6 +368,8 @@ select:focus-visible {
 .contact-images img {
   background-color: var(--icon-bg);
   cursor: pointer;
+  /* Inside a link an inline image gets baseline space under it, which would grow the box */
+  display: block;
   max-width: 100%;
 }
 

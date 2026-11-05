@@ -24,7 +24,7 @@ export default defineConfig({
               .id('profile')
               .child(S.document().schemaType('profile').documentId('profile')),
             S.listItem()
-              .title('Header & footer links')
+              .title('Site links')
               .id('navigation')
               .child(S.document().schemaType('navigation').documentId('navigation')),
             S.divider(),
